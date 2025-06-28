@@ -1,0 +1,130 @@
+# Agence Voyages – Application Web Fullstack
+
+## Description
+Application complète de gestion de forfaits touristiques avec frontend Vue.js et backend Node.js/Express, utilisant MySQL comme base de données.
+
+## Stack Technique
+- **Frontend**: Vue.js 3, TailwindCSS
+- **Backend**: Node.js, Express, Sequelize
+- **Base de données**: MySQL
+
+## Structure du Projet
+
+```
+/agence-voyages
+  /client          # Frontend Vue.js
+    /src
+      /views
+      /components
+    package.json
+  
+  /server         # Backend Node.js/Express
+    /app
+      /controllers
+      /models
+      /routes
+    server.js
+    package.json
+```
+
+## Installation
+
+### Prérequis
+- Node.js 18+
+- npm
+- MySQL installé
+
+### 1. Configuration Initiale
+
+1. Cloner le dépôt
+2. Configurer la base de données MySQL:
+
+```sql
+CREATE DATABASE tp3voyages CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE tp3voyages;
+
+CREATE TABLE forfaits (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  price FLOAT,
+  photo VARCHAR(255),
+  category VARCHAR(100)
+);
+```
+
+### 2. Configuration du Backend
+
+1. Accédez au dossier server:
+```bash
+cd agence-voyages/server
+```
+
+2. Installez les dépendances:
+```bash
+npm install
+```
+
+3. Configurez la connexion à la base de données dans `app/config/db.config.js`:
+```javascript
+module.exports = {
+  HOST: "localhost",
+  USER: "root", 
+  PASSWORD: "votre_mot_de_passe",
+  DB: "tp3voyages",
+  dialect: "mysql"
+};
+```
+
+4. Démarrer le serveur:
+```bash
+npm start
+```
+Le serveur sera disponible sur http://localhost:8080
+
+### 3. Configuration du Frontend
+
+1. Accédez au dossier client:
+```bash
+cd ../client
+```
+
+2. Installez les dépendances:
+```bash
+npm install
+```
+
+3. Démarrer l'application Vue:
+```bash
+npm run serve
+```
+L'application sera disponible sur http://localhost:8081
+
+## Fonctionnalités
+
+### Gestion des Forfaits
+- **Création** de nouveaux forfaits
+- **Visualisation** de la liste des forfaits
+- **Modification** des forfaits existants
+- **Suppression** de forfaits
+
+### Interface Utilisateur
+- Design responsive et moderne
+- Filtrage par catégories
+- Navigation intuitive
+
+## API Endpoints (Backend)
+
+| Méthode | Endpoint         | Description                |
+|---------|-----------------|----------------------------|
+| GET     | /api/forfaits   | Récupère tous les forfaits |
+| POST    | /api/forfaits   | Crée un nouveau forfait    |
+| PUT     | /api/forfaits/:id | Met à jour un forfait     |
+| DELETE  | /api/forfaits/:id | Supprime un forfait       |
+
+## Auteur
+**Adil Mostapha El Amrani**  
+2025 – Tous droits réservés
+
+## Licence
+Ce projet est open-source à but éducatif.
